@@ -6,7 +6,8 @@
     },
     "email_notifications": {
       "on_success": [
-        "aparizi@pniazure.com"
+        "aparizi@pniazure.com",
+        "shansen@pniazure.com"
       ],
       "on_failure": [
         "aparizi@pniazure.com"
