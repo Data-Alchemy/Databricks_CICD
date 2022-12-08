@@ -1,16 +1,4 @@
 #!/bin/bash
-: '  
-Provider options are:
---------------------
-azureDevOpsServices
-bitbucketCloud
-bitbucketServer
-gitHub
-gitHubEnterprise
-gitLab
-gitLabEnterpriseEdition
-'  
-
 repo_url=${repo_url:-myrepo}
 provider=${provider:azureDevOpsServices}
 repo_path=${repo_path:-/Repos/AzureDevops/Databricks_CICD/}
