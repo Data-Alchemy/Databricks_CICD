@@ -13,7 +13,7 @@ gitLabEnterpriseEdition
 
 repo_url=${repo_url:-myrepo}
 provider=${provider:azureDevOpsServices}
-repo_path=${repo_path:-/Repos/AzureDevops/Docker_Databricks_Connect/}
+repo_path=${repo_path:-/Repos/AzureDevops/Databricks_CICD/}
 
 while [ $# -gt 0 ]; do
 
