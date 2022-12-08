@@ -1,0 +1,1 @@
+databricks clusters create --json-file create-cluster-single-user.json
