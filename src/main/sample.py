@@ -14,6 +14,7 @@ schema = StructType([
     StructField('TempLowF', IntegerType(), False)
 ])
 
+# COMMAND ----------
 data = [
     [ 'BLI', date(2021, 4, 3), 52, 43],
     [ 'BLI', date(2021, 4, 2), 50, 38],
@@ -27,6 +28,7 @@ data = [
 ]
 
 temps = spark.createDataFrame(data, schema)
+# COMMAND ----------
 
 # Create a table on the Databricks cluster and then fill
 # the table with the DataFrame's contents.
