@@ -35,7 +35,7 @@ sudo systemctl enable docker
 sudo apt-get install git
 ```
 #
-### Tool Usage
+# Tool Usage
 
 1. Clone repo (```git clone repo ```) 
 2. go into project directory (``` cd DATABRICKS_CICD ```)
@@ -101,26 +101,6 @@ Scala :
     ```
     // COMMAND ----------
     ```
-
-
-#
-
-### Databricks Connect Overview
-
- `Please note that databricks connect does not work with existing spark environments to avoid any env contamination this project uses poetry venv to create an isolated work environment.`
- `Must add this option to the clusters advanced config spark.databricks.service.server.enabled true`
-
-Databricks Connect allows you to connect your favorite IDE (Eclipse, IntelliJ, PyCharm, RStudio, Visual Studio Code), notebook server (Jupyter Notebook, Zeppelin), and other custom applications to Databricks clusters.
-In the case of this project its meant to enable users to follow CICD processes for deploying code from their local dev machine using Dev Containers (Docker) to elevated environments.
-More information can be found about this tool on the following [Microsoft documentation link](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-connect)
-
-### Basic Usage
-
-
-#### Deployment Overview
-#
-![Deployment Solution][deployment-diagram]
-#
 ##### Work with dependencies
 Typically your main class or Python file will have other dependency JARs and files. You can add such dependency JARs and files by calling sparkContext.addJar("path-to-the-jar") or sparkContext.addPyFile("path-to-the-file")
 
@@ -149,6 +129,24 @@ dbutils = DBUtils(spark)
 dbutils.fs.cp('file:/home/user/data.csv', 'dbfs:/uploads')
 dbutils.fs.cp('dbfs:/output/results.csv', 'file:/home/user/downloads/')
 ```
+
+#
+
+### Databricks Connect Overview
+
+ `Please note that databricks connect does not work with existing spark environments to avoid any env contamination this project uses poetry venv to create an isolated work environment.`
+ `Must add this option to the clusters advanced config spark.databricks.service.server.enabled true`
+
+Databricks Connect allows you to connect your favorite IDE (Eclipse, IntelliJ, PyCharm, RStudio, Visual Studio Code), notebook server (Jupyter Notebook, Zeppelin), and other custom applications to Databricks clusters.
+In the case of this project its meant to enable users to follow CICD processes for deploying code from their local dev machine using Dev Containers (Docker) to elevated environments.
+More information can be found about this tool on the following [Microsoft documentation link](https://learn.microsoft.com/en-us/azure/databricks/dev-tools/databricks-connect)
+
+### Basic Usage
+
+
+#### Deployment Overview
+#
+![Deployment Solution][deployment-diagram]
 #
 
 # Best Practices
