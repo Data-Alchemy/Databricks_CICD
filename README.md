@@ -63,7 +63,7 @@ Python :
     ```
     # COMMAND ----------
     ```
- 
+  
 R : 
 
 - Create a notebook (add to top of the file or cell)
