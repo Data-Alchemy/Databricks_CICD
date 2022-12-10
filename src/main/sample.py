@@ -1,3 +1,4 @@
+# Databricks notebook source
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from datetime import date

@@ -38,17 +38,72 @@ sudo apt-get install git
 ### Tool Usage
 
 1. Clone repo (```git clone repo ```) 
-2. go into project directory (``` cd Docker_Databricks_Connect ```)
+2. go into project directory (``` cd DATABRICKS_CICD ```)
 3. Create your feature branch (try to use a relevant branch name) (`git checkout -b feature/fooBar`)
 4. Create a databricks.env file ( see sample_databricks_env.txt for format) Add your databricks token to databricks.env file (```DATABRICKS_TOKEN=Enter Your Token Here```)
 5. build your local environment (`cd ./build; docker-compose up --build -d`)
 6. To load your python scripts into the environment add them to the src folder
-6. to run code interactively from terminal run (`docker exec -it (docker inspect --format="{{.Id}}" Databricks-Connect) bash`)
+7. to run code interactively from terminal run (`docker exec -it (docker inspect --format="{{.Id}}" databricks_cicd) bash`)
 #
-### Databricks Medalion Architecture
 
-A medallion architecture is a data design pattern used to logically organize data in a lakehouse, with the goal of incrementally and progressively improving the structure and quality of data as it flows through each layer of the architecture (from Bronze ⇒ Silver ⇒ Gold layer tables). Medallion architectures are sometimes also referred to as "multi-hop" architectures.
-[Databricks documentation](https://www.databricks.com/glossary/medallion-architecture#:~:text=A%20medallion%20architecture%20is%20a%20data%20design%20pattern,%28from%20Bronze%20%E2%87%92%20Silver%20%E2%87%92%20Gold%20layer%20tables%29.)
+### Creating Databricks Notebooks Locally
+
+Databricks uses a series of command tags to identify/ differentiate a file from a databricks notebook. Here are the commands that need to be added to your python file for it to be converted to a Notebook.
+[More details on importing workbooks](databrick-import-workbooks)
+
+Python : 
+
+- Create a notebook (add to top of the file or cell)
+
+    ```
+    # Databricks notebook source
+    ```
+- Create a code cell
+
+    ```
+    # COMMAND ----------
+    ```
+
+R : 
+
+- Create a notebook (add to top of the file or cell)
+
+    ```
+    # Databricks notebook source
+    ```
+- Create a code cell
+
+    ```
+    # COMMAND ----------
+    ```
+
+SQL :
+
+- Create a notebook (add to top of the file or cell)
+
+    ```
+    -- Databricks notebook source
+    ```
+- Create a code cell
+    ```
+    -- COMMAND ----------
+    ```
+
+Scala : 
+
+- Create a notebook
+
+    ```
+    // Databricks notebook source
+    ```
+- Create a code cell
+
+    ```
+    // COMMAND ----------
+    ```
+
+
+#
 
 ### Databricks Connect Overview
 
@@ -94,9 +149,16 @@ dbutils = DBUtils(spark)
 dbutils.fs.cp('file:/home/user/data.csv', 'dbfs:/uploads')
 dbutils.fs.cp('dbfs:/output/results.csv', 'file:/home/user/downloads/')
 ```
+#
 
+# Best Practices
+### Databricks Medalion Architecture
 
+A medallion architecture is a data design pattern used to logically organize data in a lakehouse, with the goal of incrementally and progressively improving the structure and quality of data as it flows through each layer of the architecture (from Bronze ⇒ Silver ⇒ Gold layer tables). Medallion architectures are sometimes also referred to as "multi-hop" architectures.
+[Databricks documentation](https://www.databricks.com/glossary/medallion-architecture#:~:text=A%20medallion%20architecture%20is%20a%20data%20design%20pattern,%28from%20Bronze%20%E2%87%92%20Silver%20%E2%87%92%20Gold%20layer%20tables%29.)
 
+#
+# Sample Script 
 Example Script built with this project to test execution
 ```
 from pyspark.sql import SparkSession
@@ -186,6 +248,7 @@ spark.sql('DROP TABLE demo_temps_table')
 [docker]: https://learn.microsoft.com/en-us/dotnet/architecture/microservices/container-docker-introduction/docker-defined
 [poetry]: https://python-poetry.org/docs/
 [deployment-diagram]: https://lucid.app/publicSegments/view/714776b6-8cb5-4280-9957-ee1300c696d1/image.png
+[databrick-import-workbooks]: https://learn.microsoft.com/en-us/azure/databricks/notebooks/notebook-export-import
 
 #
 `cleanup docker env`
