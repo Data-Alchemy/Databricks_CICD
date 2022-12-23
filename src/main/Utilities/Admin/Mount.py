@@ -1,5 +1,15 @@
 # Databricks notebook source
 
+
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.getOrCreate()
+
+sc = spark.sparkContext
+from pyspark.sql import SparkSession
+from dbruntime.dbutils import FileInfo
+
+
 dbutils.fs.refreshMounts()
 class ADLS_Mounts():
 
